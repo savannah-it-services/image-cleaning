@@ -1,6 +1,11 @@
 const path = require('path');
 
 module.exports = function (eleventyConfig) {
+  // Expose a clean home URL derived from pathPrefix (no trailing slash)
+  // This ensures the logo and "Back to Homepage" links never get .html or extra slashes
+  const cleanHomeUrl = (eleventyConfig.pathPrefix || '').replace(/\/$/, '');
+  eleventyConfig.addGlobalData("homeUrl", cleanHomeUrl);
+
   // Passthrough static assets (images, fonts, etc.)
   eleventyConfig.addPassthroughCopy({
     'src/assets/images': 'assets/images',
