@@ -1,0 +1,116 @@
+{# Reusable Contact Us Form Component Usage: {% include "components/contact-form.njk" %} The JS in
+main.js handles validation + mailto: to the contact email from site data. A honeypot field is
+included for basic spam protection. #}
+
+<form id="contact-form" class="space-y-5" novalidate>
+  <!-- Honeypot - hidden from real users, bots often fill it -->
+  <div class="hidden" aria-hidden="true">
+    <label for="website">Website (leave blank)</label>
+    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div>
+      <label for="name" class="form-label">Full Name <span class="text-red-500">*</span></label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="form-input"
+        placeholder="Jamie Rivera"
+        autocomplete="name"
+      />
+    </div>
+    <div>
+      <label for="email" class="form-label"
+        >Email Address <span class="text-red-500">*</span></label
+      >
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="form-input"
+        placeholder="you@example.com"
+        autocomplete="email"
+      />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div>
+      <label for="phone" class="form-label">Phone Number</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        class="form-input"
+        placeholder="(912) 555-1234"
+        autocomplete="tel"
+      />
+    </div>
+    <div>
+      <label for="service" class="form-label">Service Needed</label>
+      <select id="service" name="service" class="form-input">
+        <option value="">Select a service...</option>
+        <option value="Residential - Standard Clean">Residential - Standard Clean</option>
+        <option value="Residential - Deep Clean">Residential - Deep Clean</option>
+        <option value="Move-In / Move-Out">Move-In / Move-Out Cleaning</option>
+        <option value="Commercial - Office">Commercial - Office / Retail</option>
+        <option value="Commercial - Warehouse">Commercial - Warehouse / Industrial</option>
+        <option value="Vacation Rental - Turnover">Vacation Rental Turnover (Airbnb/Vrbo)</option>
+        <option value="Post-Construction">Post-Construction Cleanup</option>
+        <option value="Other">Other / Custom Quote</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <label for="date" class="form-label">Preferred Service Date (optional)</label>
+    <input type="date" id="date" name="date" class="form-input" />
+  </div>
+
+  <div>
+    <label for="message" class="form-label"
+      >How can we help? <span class="text-red-500">*</span></label
+    >
+    <textarea
+      id="message"
+      name="message"
+      required
+      rows="4"
+      class="form-input resize-y min-h-[110px]"
+      placeholder="Tell us about your space, frequency, square footage, pets, or any special requests..."
+    ></textarea>
+  </div>
+
+  <div class="pt-2">
+    <button type="submit" class="btn-primary w-full sm:w-auto px-10 py-3.5 text-base">
+      Send Inquiry
+    </button>
+    <p class="mt-3 text-xs text-slate-500">
+      Clicking “Send Inquiry” will open your email app with everything pre-filled. No data is stored
+      on our servers.
+    </p>
+  </div>
+</form>
+
+{# Success state (shown by JS after submit) #}
+<div id="form-success" class="hidden text-center py-8">
+  <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary-100">
+    <svg class="h-8 w-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2.5"
+        d="M5 10l7-7m0 0l7 7m-7-7v18"
+      />
+    </svg>
+  </div>
+  <h3 class="mt-4 text-xl font-semibold text-slate-900">Inquiry ready to send!</h3>
+  <p class="mt-2 text-slate-600 max-w-xs mx-auto">
+    Your email client should have opened. If it didn't, please email us directly at
+    <a href="mailto:{{ site.email }}" class="font-medium text-primary-700">{{ site.email }}</a>.
+  </p>
+</div>

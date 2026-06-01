@@ -1,0 +1,115 @@
+{# Reusable Site Header / Navigation Includes desktop nav + mobile hamburger + "Contact Us" modal
+trigger #}
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+  <div class="container">
+    <div class="flex h-20 items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group" aria-label="{{ site.name }} home">
+        <img
+          src="/assets/images/logo.svg"
+          alt="{{ site.name }}"
+          class="h-9 w-auto transition-transform group-hover:scale-[1.015]"
+          width="180"
+          height="41"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-1" aria-label="Primary navigation">
+        {% for item in site.nav %}
+        <a
+          href="{{ item.url }}"
+          class="nav-link {% if page.url == item.url %}nav-link-active{% endif %}"
+        >
+          {{ item.label }}
+        </a>
+        {% endfor %}
+      </nav>
+
+      <!-- CTA Buttons -->
+      <div class="flex items-center gap-3">
+        <a
+          href="{{ site.phoneHref }}"
+          class="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-primary-700 px-3 py-1.5 rounded-lg"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 5a2 2 0 012-2 3 3 0 003 3v1m0 0v1m0-1h4m-4 0a3 3 0 01-3-3 2 2 0 012-2m14 12a2 2 0 01-2 2 3 3 0 01-3-3v-1m0 0v-1m0 1h-4m4 0a3 3 0 01-3 3 2 2 0 01-2 2"
+            />
+          </svg>
+          <span class="font-semibold">{{ site.phone }}</span>
+        </a>
+
+        <button
+          type="button"
+          data-open-contact
+          class="btn-primary text-sm px-5 py-2.5 hidden sm:inline-flex"
+        >
+          Contact Us
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          id="nav-toggle"
+          type="button"
+          class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Toggle navigation menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              id="menu-icon"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.25"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div
+    id="mobile-nav"
+    class="hidden md:hidden flex-col border-t bg-white px-5 py-6 gap-1 text-lg"
+    role="navigation"
+    aria-label="Mobile menu"
+  >
+    {% for item in site.nav %}
+    <a
+      href="{{ item.url }}"
+      class="block py-3 px-2 rounded-lg text-slate-700 hover:bg-primary-50 hover:text-primary-700 font-medium"
+    >
+      {{ item.label }}
+    </a>
+    {% endfor %}
+    <div class="pt-4 mt-2 border-t flex flex-col gap-3">
+      <a href="{{ site.phoneHref }}" class="btn-secondary justify-center">
+        Call {{ site.phone }}
+      </a>
+      <button data-open-contact class="btn-primary justify-center">Get a Free Quote</button>
+    </div>
+  </div>
+
+  <!-- Mobile overlay -->
+  <div id="nav-overlay" class="hidden md:hidden fixed inset-0 bg-black/40 z-40"></div>
+</header>

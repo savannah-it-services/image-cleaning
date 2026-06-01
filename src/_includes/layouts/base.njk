@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {# Dynamic SEO Title - pages override via frontmatter #}
+    <title>
+      {% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.seo.defaultTitle }}{% endif %}
+    </title>
+
+    {# Meta Description - critical for SEO #}
+    <meta
+      name="description"
+      content="{% if description %}{{ description }}{% else %}{{ site.seo.defaultDescription }}{% endif %}"
+    />
+
+    {# Keywords (supportive, not primary ranking factor anymore but still useful) #} {% if keywords
+    %}
+    <meta name="keywords" content="{{ keywords | join(', ') }}" />
+    {% else %}
+    <meta name="keywords" content="{{ site.seo.keywords | join(', ') }}" />
+    {% endif %} {# Canonical URL #}
+    <link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}" />
+
+    {# Open Graph / Social #}
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="{% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.seo.defaultTitle }}{% endif %}"
+    />
+    <meta
+      property="og:description"
+      content="{% if description %}{{ description }}{% else %}{{ site.seo.defaultDescription }}{% endif %}"
+    />
+    <meta property="og:url" content="{{ page.url | absoluteUrl(site.url) }}" />
+    <meta property="og:site_name" content="{{ site.name }}" />
+    <meta
+      property="og:image"
+      content="{{ '/assets/images/hero-illustration.svg' | absoluteUrl(site.url) }}"
+    />
+    <meta property="og:locale" content="en_US" />
+
+    {# Twitter Card #}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="{% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.seo.defaultTitle }}{% endif %}"
+    />
+    <meta
+      name="twitter:description"
+      content="{% if description %}{{ description }}{% else %}{{ site.seo.defaultDescription }}{% endif %}"
+    />
+
+    {# Favicon & Touch #}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/images/icon.svg" />
+
+    {# Preconnect for performance (if we ever add external fonts or analytics) #}
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    {# Tailwind CSS - built during `npm run build` #}
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    {# Structured Data - LocalBusiness + Organization (excellent for SEO) #}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "{{ site.name }}",
+        "description": "{{ site.description }}",
+        "url": "{{ site.url }}",
+        "telephone": "{{ site.phone }}",
+        "email": "{{ site.email }}",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "{{ site.address.city }}",
+          "addressRegion": "{{ site.address.state }}",
+          "postalCode": "{{ site.address.zip }}",
+          "addressCountry": "{{ site.address.country }}"
+        },
+        "areaServed": ["Savannah", "Pooler", "Richmond Hill", "Wilmington Island", "Skidaway Island", "Hilton Head"],
+        "image": "{{ '/assets/images/logo.svg' | absoluteUrl(site.url) }}",
+        "priceRange": "$$",
+        "sameAs": [
+          {% if site.social.facebook and site.social.facebook != "#" %}"{{ site.social.facebook }}",{% endif %}
+          {% if site.social.instagram and site.social.instagram != "#" %}"{{ site.social.instagram }}"{% endif %}
+        ]
+      }
+    </script>
+
+    {# Additional page-specific structured data can be injected via block #} {% block structuredData
+    %}{% endblock %}
+
+    <meta name="theme-color" content="#0D9488" />
+  </head>
+  <body class="antialiased text-slate-800 bg-white">
+    {# Skip to content for accessibility #}
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 bg-white px-4 py-2 rounded-xl shadow text-sm font-medium z-[100]"
+    >
+      Skip to main content
+    </a>
+
+    {# Reusable Header #} {% include "components/header.njk" %} {# Page Content #}
+    <main id="main-content">{{ content | safe }}</main>
+
+    {# Reusable Footer #} {% include "components/footer.njk" %} {# ==================== GLOBAL
+    CONTACT MODAL (powered by reusable form) ==================== #}
+    <div
+      id="contact-modal"
+      class="hidden fixed inset-0 z-[70] items-center justify-center p-4 md:p-6"
+    >
+      <div id="contact-modal-overlay" class="absolute inset-0 bg-black/60"></div>
+
+      <div
+        class="relative w-full max-w-xl rounded-3xl bg-white shadow-2xl overflow-hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <div class="flex items-center justify-between border-b px-6 py-4">
+          <h2 id="modal-title" class="text-xl font-semibold text-slate-900">
+            Request a Free Quote
+          </h2>
+          <button
+            id="contact-modal-close"
+            class="text-3xl leading-none text-slate-400 hover:text-slate-600"
+            aria-label="Close contact form"
+          >
+            &times;
+          </button>
+        </div>
+
+        <div class="p-6">{% include "components/contact-form.njk" %}</div>
+      </div>
+    </div>
+
+    {# Toast container for notifications #}
+    <div
+      id="toast-container"
+      class="fixed bottom-5 right-5 z-[80] flex flex-col gap-3 pointer-events-none"
+    ></div>
+
+    {# Main site JavaScript (mobile nav + modal + form mailto + enhancements) #}
+    <script>
+      // Inject contact email for mailto form handler (keeps it as variable)
+      window.SITE_EMAIL = {{ site.email | dump | safe }};
+    </script>
+    <script src="/assets/js/main.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "image-cleaning",
+  "version": "1.0.0",
+  "description": "Professional website for Image Cleaning — residential, commercial, and vacation rental cleaning services in Savannah, GA. Built with Eleventy + Tailwind for GitHub Pages.",
+  "homepage": "https://imagecleaning.example.com",
+  "main": ".eleventy.js",
+  "scripts": {
+    "dev": "concurrently \"eleventy --serve --port=8080\" \"tailwindcss -i src/assets/css/input.css -o _site/assets/css/style.css --watch\"",
+    "build:css": "tailwindcss -i src/assets/css/input.css -o _site/assets/css/style.css --minify",
+    "build": "npm run build:css && eleventy",
+    "preview": "npx serve _site -l 8080",
+    "lint": "eslint \"src/assets/js/**/*.js\" && prettier --check \"**/*.{js,njk,html,css,md,json}\"",
+    "lint:fix": "eslint --fix \"src/assets/js/**/*.js\" && prettier --write \"**/*.{js,njk,html,css,md,json}\"",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [
+    "eleventy",
+    "tailwindcss",
+    "static-site",
+    "github-pages",
+    "cleaning-service",
+    "savannah-ga"
+  ],
+  "author": "Image Cleaning",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.17"
+  }
+}

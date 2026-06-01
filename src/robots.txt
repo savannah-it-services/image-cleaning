@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://imagecleaning.example.com/sitemap.xml
+
+# Image Cleaning - Professional cleaning services, Savannah GA
