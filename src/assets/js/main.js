@@ -307,6 +307,8 @@
       if (!href) return;
       const linkPath = href.replace(/\/$/, '') || '/';
       if (linkPath === currentPath) {
+        // Remove any default slate text color that might be on mobile nav links
+        link.classList.remove('text-slate-700');
         link.classList.add('nav-link-active', 'text-primary-700');
         link.setAttribute('aria-current', 'page');
       }

@@ -31,7 +31,12 @@ module.exports = function (eleventyConfig) {
     const baseUrl = base || 'https://savannah-it-services.github.io/image-cleaning';
     if (!url) return baseUrl;
     if (url.startsWith('http')) return url;
-    return baseUrl.replace(/\/$/, '') + (url.startsWith('/') ? '' : '/') + url;
+    let result = baseUrl.replace(/\/$/, '') + (url.startsWith('/') ? '' : '/') + url;
+    // Avoid trailing slash on the root URL (e.g. /image-cleaning/ → /image-cleaning)
+    if (result.endsWith('/') && result.replace(baseUrl.replace(/\/$/, ''), '').length <= 1) {
+      result = result.slice(0, -1);
+    }
+    return result;
   });
 
   // Eleventy config
@@ -46,8 +51,8 @@ module.exports = function (eleventyConfig) {
     templateFormats: ['njk', 'html', 'md', '11ty.js'],
     htmlTemplateEngine: 'njk',
     markdownTemplateEngine: 'njk',
-    // Important for GitHub Pages project sites (e.g. /image-cleaning/)
-    // This makes the built-in `url` filter prefix all root-absolute paths correctly.
-    pathPrefix: '/image-cleaning/',
+    // Important for GitHub Pages project sites (e.g. /image-cleaning)
+    // Note: No trailing slash so that the homepage link renders as /image-cleaning (clean URL)
+    pathPrefix: '/image-cleaning',
   };
 };
