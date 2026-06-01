@@ -110,12 +110,12 @@
     CONTACT MODAL (powered by reusable form) ==================== #}
     <div
       id="contact-modal"
-      class="hidden fixed inset-0 z-[70] items-center justify-center p-4 md:p-6"
+      class="hidden fixed inset-0 z-[70] items-center justify-center p-4 md:p-6 opacity-0 transition-opacity duration-200"
     >
       <div id="contact-modal-overlay" class="absolute inset-0 bg-black/60"></div>
 
       <div
-        class="relative w-full max-w-xl rounded-3xl bg-white shadow-2xl overflow-hidden"
+        class="relative w-full max-w-xl rounded-3xl bg-white shadow-2xl overflow-hidden transition-all duration-200 ease-out opacity-0 scale-95"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"

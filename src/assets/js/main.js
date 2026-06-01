@@ -76,26 +76,56 @@
     const form = modal.querySelector('#contact-form');
 
     function openModal() {
+      // Start the fade-in transition
       modal.classList.remove('hidden');
       modal.classList.add('flex');
+
+      // Use rAF to ensure the browser applies the 'flex' before starting the opacity transition
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0');
+        modal.classList.add('opacity-100');
+
+        const dialog = modal.querySelector('.rounded-3xl');
+        if (dialog) {
+          dialog.classList.remove('opacity-0', 'scale-95');
+          dialog.classList.add('opacity-100', 'scale-100');
+        }
+      });
+
       document.body.style.overflow = 'hidden';
-      // focus first field
+
+      // focus first field after animation starts
       setTimeout(() => {
         const firstInput = modal.querySelector('input, select, textarea');
         if (firstInput) firstInput.focus();
-      }, 80);
+      }, 150);
     }
 
     function closeModal() {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = '';
-      // reset form state if needed
-      if (form) {
-        form.classList.remove('hidden');
-        const success = modal.querySelector('#form-success');
-        if (success) success.classList.add('hidden');
+      // Start fade-out
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0');
+
+      const dialog = modal.querySelector('.rounded-3xl');
+      if (dialog) {
+        dialog.classList.remove('opacity-100', 'scale-100');
+        dialog.classList.add('opacity-0', 'scale-95');
       }
+
+      // After the transition finishes, fully hide the modal
+      setTimeout(() => {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+
+        document.body.style.overflow = '';
+
+        // reset form state if needed
+        if (form) {
+          form.classList.remove('hidden');
+          const success = modal.querySelector('#form-success');
+          if (success) success.classList.add('hidden');
+        }
+      }, 200);
     }
 
     // Open buttons (header CTA, page CTAs etc)
