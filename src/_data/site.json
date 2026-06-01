@@ -20,11 +20,11 @@
     "google": "#"
   },
   "nav": [
-    { "label": "Residential", "url": "/residential.html" },
-    { "label": "Commercial", "url": "/commercial.html" },
-    { "label": "Vacation Rentals", "url": "/vacation-rentals.html" },
-    { "label": "About", "url": "/about.html" },
-    { "label": "Testimonials", "url": "/testimonials.html" }
+    { "label": "Residential", "url": "/residential" },
+    { "label": "Commercial", "url": "/commercial" },
+    { "label": "Vacation Rentals", "url": "/vacation-rentals" },
+    { "label": "About", "url": "/about" },
+    { "label": "Testimonials", "url": "/testimonials" }
   ],
   "seo": {
     "defaultTitle": "Image Cleaning | Professional House & Commercial Cleaning in Savannah GA",

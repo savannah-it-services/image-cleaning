@@ -21,9 +21,29 @@ permalink: /404.html
 
     <div class="mt-12 text-xs text-slate-400">
       Looking for something specific? Try
-      <a href="{{ '/residential.html' | url }}" class="text-primary-600 hover:underline">Residential</a>,
-      <a href="{{ '/vacation-rentals.html' | url }}" class="text-primary-600 hover:underline">Vacation Rentals</a>, or
-      <a href="{{ '/testimonials.html' | url }}" class="text-primary-600 hover:underline">our reviews</a>.
+      <a href="{{ '/residential' | url }}" class="text-primary-600 hover:underline">Residential</a>,
+      <a href="{{ '/vacation-rentals' | url }}" class="text-primary-600 hover:underline">Vacation Rentals</a>, or
+      <a href="{{ '/testimonials' | url }}" class="text-primary-600 hover:underline">our reviews</a>.
     </div>
   </div>
 </section>
+
+<script>
+  // GitHub Pages clean URL redirect (handles /commercial → /commercial.html)
+  (function () {
+    var path = window.location.pathname;
+
+    // Don't redirect if already .html, or if it's the root
+    if (path.endsWith('.html') || path === '/' || path === '/image-cleaning/') {
+      return;
+    }
+
+    // Remove trailing slash if present
+    if (path.endsWith('/')) {
+      path = path.slice(0, -1);
+    }
+
+    // Redirect to .html version
+    window.location.replace(path + '.html');
+  })();
+</script>
