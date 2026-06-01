@@ -15,15 +15,15 @@ permalink: /404.html
     </p>
 
     <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="/" class="btn-primary">Back to Homepage</a>
+      <a href="{{ '/' | url }}" class="btn-primary">Back to Homepage</a>
       <button data-open-contact class="btn-secondary">Contact Us Instead</button>
     </div>
 
     <div class="mt-12 text-xs text-slate-400">
       Looking for something specific? Try
-      <a href="/residential/" class="text-primary-600 hover:underline">Residential</a>,
-      <a href="/vacation-rentals/" class="text-primary-600 hover:underline">Vacation Rentals</a>, or
-      <a href="/testimonials/" class="text-primary-600 hover:underline">our reviews</a>.
+      <a href="{{ '/residential/' | url }}" class="text-primary-600 hover:underline">Residential</a>,
+      <a href="{{ '/vacation-rentals/' | url }}" class="text-primary-600 hover:underline">Vacation Rentals</a>, or
+      <a href="{{ '/testimonials/' | url }}" class="text-primary-600 hover:underline">our reviews</a>.
     </div>
   </div>
 </section>

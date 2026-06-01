@@ -53,14 +53,14 @@
     />
 
     {# Favicon & Touch #}
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/assets/images/icon.svg" />
+    <link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="{{ '/assets/images/icon.svg' | url }}" />
 
     {# Preconnect for performance (if we ever add external fonts or analytics) #}
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     {# Tailwind CSS - built during `npm run build` #}
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
 
     {# Structured Data - LocalBusiness + Organization (excellent for SEO) #}
     <script type="application/ld+json">
@@ -148,6 +148,6 @@
       // Inject contact email for mailto form handler (keeps it as variable)
       window.SITE_EMAIL = {{ site.email | dump | safe }};
     </script>
-    <script src="/assets/js/main.js" defer></script>
+    <script src="{{ '/assets/js/main.js' | url }}" defer></script>
   </body>
 </html>

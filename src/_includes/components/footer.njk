@@ -5,9 +5,9 @@
     <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-10">
       <!-- Brand + Contact -->
       <div class="md:col-span-5">
-        <a href="/" class="inline-block">
+        <a href="{{ '/' | url }}" class="inline-block">
           <img
-            src="/assets/images/logo.svg"
+            src="{{ '/assets/images/logo.svg' | url }}"
             alt="{{ site.name }}"
             class="h-8 w-auto brightness-200"
             width="160"
@@ -36,7 +36,7 @@
         <div class="font-semibold text-white mb-3 text-sm tracking-wider uppercase">Explore</div>
         <ul class="space-y-2 text-sm">
           {% for item in site.nav %}
-          <li><a href="{{ item.url }}" class="hover:text-white transition">{{ item.label }}</a></li>
+          <li><a href="{{ item.url | url }}" class="hover:text-white transition">{{ item.label }}</a></li>
           {% endfor %}
         </ul>
       </div>
@@ -48,26 +48,26 @@
         </div>
         <ul class="grid grid-cols-1 gap-y-1.5 text-sm">
           <li>
-            <a href="/residential/" class="hover:text-white transition"
+            <a href="{{ '/residential/' | url }}" class="hover:text-white transition"
               >Residential House Cleaning</a
             >
           </li>
           <li>
-            <a href="/vacation-rentals/" class="hover:text-white transition"
+            <a href="{{ '/vacation-rentals/' | url }}" class="hover:text-white transition"
               >Airbnb &amp; Vrbo Turnover</a
             >
           </li>
           <li>
-            <a href="/commercial/" class="hover:text-white transition"
+            <a href="{{ '/commercial/' | url }}" class="hover:text-white transition"
               >Office &amp; Commercial Janitorial</a
             >
           </li>
           <li>
-            <a href="/residential/" class="hover:text-white transition"
+            <a href="{{ '/residential/' | url }}" class="hover:text-white transition"
               >Move-In / Move-Out Cleans</a
             >
           </li>
-          <li><a href="/about/" class="hover:text-white transition">Eco-Friendly Options</a></li>
+          <li><a href="{{ '/about/' | url }}" class="hover:text-white transition">Eco-Friendly Options</a></li>
         </ul>
       </div>
     </div>
@@ -77,8 +77,8 @@
     >
       <div>© {{ year }} {{ site.name }}. All rights reserved.</div>
       <div class="md:ml-auto flex gap-x-5">
-        <a href="/privacy/" class="hover:text-slate-400">Privacy</a>
-        <a href="/terms/" class="hover:text-slate-400">Terms</a>
+        <a href="{{ '/privacy/' | url }}" class="hover:text-slate-400">Privacy</a>
+        <a href="{{ '/terms/' | url }}" class="hover:text-slate-400">Terms</a>
         <span class="hidden md:inline">•</span>
         <span>Locally owned &amp; operated in Savannah, GA</span>
       </div>

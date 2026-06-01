@@ -5,9 +5,9 @@ trigger #}
   <div class="container">
     <div class="flex h-20 items-center justify-between">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 group" aria-label="{{ site.name }} home">
+      <a href="{{ '/' | url }}" class="flex items-center gap-3 group" aria-label="{{ site.name }} home">
         <img
-          src="/assets/images/logo.svg"
+          src="{{ '/assets/images/logo.svg' | url }}"
           alt="{{ site.name }}"
           class="h-9 w-auto transition-transform group-hover:scale-[1.015]"
           width="180"
@@ -19,8 +19,8 @@ trigger #}
       <nav class="hidden md:flex items-center gap-1" aria-label="Primary navigation">
         {% for item in site.nav %}
         <a
-          href="{{ item.url }}"
-          class="nav-link {% if page.url == item.url %}nav-link-active{% endif %}"
+          href="{{ item.url | url }}"
+          class="nav-link {% if (page.url | url) == (item.url | url) %}nav-link-active{% endif %}"
         >
           {{ item.label }}
         </a>
@@ -96,7 +96,7 @@ trigger #}
   >
     {% for item in site.nav %}
     <a
-      href="{{ item.url }}"
+      href="{{ item.url | url }}"
       class="block py-3 px-2 rounded-lg text-slate-700 hover:bg-primary-50 hover:text-primary-700 font-medium"
     >
       {{ item.label }}

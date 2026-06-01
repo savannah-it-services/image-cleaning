@@ -63,7 +63,7 @@ tags: ['page']
       <div class="md:col-span-5 relative hidden lg:block">
         <div class="bg-white/5 rounded-3xl p-3 shadow-2xl">
           <img
-            src="/assets/images/hero-illustration.svg"
+            src="{{ '/assets/images/hero-illustration.svg' | url }}"
             alt="Clean modern Savannah home ready for guests after professional cleaning"
             class="w-full rounded-2xl"
             width="640"
@@ -106,7 +106,7 @@ tags: ['page']
 
     <div class="grid md:grid-cols-3 gap-6">
       <!-- Residential -->
-      <a href="/residential/" class="service-card group">
+      <a href="{{ '/residential/' | url }}" class="service-card group">
         <div class="service-icon"><span class="text-2xl">🏠</span></div>
         <h3 class="text-xl font-semibold group-hover:text-primary-700">Residential Cleaning</h3>
         <p class="mt-2 text-slate-600 flex-1">
@@ -120,7 +120,7 @@ tags: ['page']
       </a>
 
       <!-- Commercial -->
-      <a href="/commercial/" class="service-card group">
+      <a href="{{ '/commercial/' | url }}" class="service-card group">
         <div class="service-icon"><span class="text-2xl">🏢</span></div>
         <h3 class="text-xl font-semibold group-hover:text-primary-700">Commercial &amp; Office</h3>
         <p class="mt-2 text-slate-600 flex-1">
@@ -134,7 +134,7 @@ tags: ['page']
       </a>
 
       <!-- Vacation Rentals -->
-      <a href="/vacation-rentals/" class="service-card group">
+      <a href="{{ '/vacation-rentals/' | url }}" class="service-card group">
         <div class="service-icon"><span class="text-2xl">🛎️</span></div>
         <h3 class="text-xl font-semibold group-hover:text-primary-700">Vacation Rentals</h3>
         <p class="mt-2 text-slate-600 flex-1">
@@ -219,7 +219,7 @@ tags: ['page']
         </h2>
       </div>
       <a
-        href="/testimonials/"
+        href="{{ '/testimonials/' | url }}"
         class="hidden md:inline text-sm font-semibold text-primary-700 hover:underline"
         >Read all reviews →</a
       >
@@ -259,7 +259,7 @@ tags: ['page']
       </div>
     </div>
     <div class="md:hidden mt-6">
-      <a href="/testimonials/" class="text-sm font-semibold text-primary-700"
+      <a href="{{ '/testimonials/' | url }}" class="text-sm font-semibold text-primary-700"
         >Read all Google &amp; client reviews →</a
       >
     </div>

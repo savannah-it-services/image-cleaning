@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://imagecleaning.example.com/sitemap.xml
+Sitemap: https://savannah-it-services.github.io/image-cleaning/sitemap.xml
 
 # Image Cleaning - Professional cleaning services, Savannah GA
