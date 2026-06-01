@@ -20,7 +20,7 @@
     function closeNav() {
       isOpen = false;
       mobileNav.classList.add('hidden');
-      mobileNav.classList.remove('flex');
+      mobileNav.classList.remove('flex', 'fixed', 'top-[5rem]', 'left-0', 'right-0', 'z-[999]', 'shadow-xl');
       if (overlay) overlay.classList.add('hidden');
       toggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
@@ -29,7 +29,7 @@
     function openNav() {
       isOpen = true;
       mobileNav.classList.remove('hidden');
-      mobileNav.classList.add('flex');
+      mobileNav.classList.add('flex', 'fixed', 'top-[5rem]', 'left-0', 'right-0', 'z-[999]', 'shadow-xl');
       if (overlay) overlay.classList.remove('hidden');
       toggle.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
