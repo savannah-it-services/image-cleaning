@@ -7,6 +7,7 @@ module.exports = function (eleventyConfig) {
     'src/assets/js': 'assets/js',
     'src/assets/css': 'assets/css', // for any non-tailwind or fallbacks
     'src/robots.txt': 'robots.txt',
+    'favicon.svg': 'favicon.svg',
   });
 
   // Add a collection for navigation (useful for sitemap too)
