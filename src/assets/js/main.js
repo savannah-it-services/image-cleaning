@@ -195,7 +195,6 @@
         `Email: ${data.email}`,
         `Phone: ${data.phone || 'Not provided'}`,
         `Service Type: ${data.service || 'Not specified'}`,
-        `Preferred Date: ${data.date || 'Flexible'}`,
         ``,
         `Message:`,
         `${data.message}`,
